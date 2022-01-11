@@ -60,6 +60,29 @@ class TuyenSinh() {
         listStudent.add(thiSinh)
     }
 
+    fun HienThiThongTinThiSinhVaKhoi() {
+        for (i in 0 until listStudent.size) {
+            println(
+                "${listStudent[i].soBaoDanh}," +
+                        "${listStudent[i].hoTen}," +
+                        "${listStudent[i].diaChi}," +
+                        "${listStudent[i].mucUuTien},"
+
+            )
+
+        }
+
+    }
+
+    fun timKiemThiSinhTheoSBD(soBaoDanh: Int): List<ThiSinh> {
+        for (i in 0 until listStudent.size) {
+            if (listStudent[i].soBaoDanh == soBaoDanh) {
+                listStudent.add(listStudent[i])
+            }
+        }
+        return listStudent
+    }
+
 }
 
 
@@ -143,7 +166,24 @@ fun main() {
                     }
                 }
             }
+            "2" -> {
+                ts.HienThiThongTinThiSinhVaKhoi()
+
+            }
+            "3" -> {
+                println("Nhap So Bao Danh Can Tim Kiem: ")
+                val soBaoDanh = readLine()?.toInt() ?: 0
+                ts.timKiemThiSinhTheoSBD(soBaoDanh)
+                val ketQua = ts.timKiemThiSinhTheoSBD(soBaoDanh)
+                print("Ket Qua La: ")
+                ketQua.forEach {
+                    println("SBD: ${it.soBaoDanh}")
+                    println("Ten: ${it.hoTen}")
+                    println("Dia Chi: ${it.diaChi}")
+                    println("Muc Uu Tien: ${it.mucUuTien}")
+
+                }
+            }
         }
     }
-
 }
