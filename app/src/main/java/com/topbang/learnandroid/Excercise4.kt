@@ -1,6 +1,5 @@
 package com.topbang.learnandroid
 
-//Bài 1
 //Một đơn vị sản xuất gồm có các cán bộ là công nhân, kỹ sư, nhân viên. Mỗi cán bộ cần quản lý các dữ liệu:
 // Họ tên, tuổi, giới tính(name, nữ, khác), địa chỉ.
 //
