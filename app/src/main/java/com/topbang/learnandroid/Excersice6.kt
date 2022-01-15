@@ -40,15 +40,14 @@ class QuanLiHoDanCu() {
     }
 
     fun HienThiThongTinHoDanCu() {
-        for (i in 0 until listHoGiaDinh.size) {
+        listHoGiaDinh.forEach {
             println(
-                "So Nha: ${listHoGiaDinh[i].soNha}," +
-                        "So Thanh Vien: ${listHoGiaDinh[i].soThanhVien}," +
-                        "Ho Ten: ${listHoGiaDinh[i].hoTen}," +
-                        "Tuoi: ${listHoGiaDinh[i].tuoi}," +
-                        "Nghe Nghiep: ${listHoGiaDinh[i].ngheNghiep}," +
-                        "So CMND: ${listHoGiaDinh[i].soCMND}"
-
+                "So Nha: ${it.soNha}," +
+                        "So Thanh Vien: ${it.soThanhVien}," +
+                        "Ho Ten: ${it.hoTen}," +
+                        "Tuoi: ${it.tuoi}," +
+                        "Nghe Nghiep: ${it.ngheNghiep}," +
+                        "So CMND: ${it.soCMND}"
             )
         }
     }
@@ -74,7 +73,8 @@ fun main() {
                 val ngheNghiep = readLine() ?: ""
                 println("Nhap So CMND Thanh Vien: ")
                 val soCMND = readLine()?.toInt() ?: 0
-                val hoDanCu: HoGiaDinh = HoGiaDinh(soThanhVien, soNha, hoTen, tuoi, ngheNghiep, soCMND)
+                val hoDanCu: HoGiaDinh =
+                    HoGiaDinh(soThanhVien, soNha, hoTen, tuoi, ngheNghiep, soCMND)
                 qlhdc.ThemThongTinHoDanCu(hoDanCu)
             }
             "2" -> {
