@@ -39,8 +39,13 @@ class QuanLySach() {
         listTaiLieu.add(taiLieu)
     }
 
-    fun XoaTaiLieuTheoSoTaiLieu() {
-
+    fun XoaTaiLieuTheoSoTaiLieu(maTL: String): List<TaiLieu> {
+        for (i in 0 until listTaiLieu.size) {
+            if (listTaiLieu[i].maTL == maTL) {
+                listTaiLieu.remove(listTaiLieu[i])
+            }
+        }
+        return listTaiLieu
     }
 
     fun HienThiThongTinTaiLieu() {
@@ -84,59 +89,73 @@ fun main() {
         val input = readLine()
         when (input) {
             "1" -> {
-                println("Them Moi Tai Lieu: ")
-                println("Nhap a De Them Sach: ")
-                println("Nhap b De Them Tap Chi: ")
-                println("Nhap c De Them Bao: ")
-                val nhap = readLine()
-                when (nhap) {
-                    "a", "A" -> {
-                        println("Nhap Ten Tac Gia: ")
-                        val tenTG = readLine() ?: ""
-                        println("Nhap So Trang: ")
-                        val soTrang = readLine() ?: ""
-                        println("Nhap Ma Tai Lieu: ")
-                        val maTL = readLine()?.toInt() ?: 0
-                        println("Nhap Ten Nha Phat Minh: ")
-                        val tenNPM = readLine() ?: ""
-                        println("Nhap So Ban Phat Minh: ")
-                        val soBPM = readLine()?.toInt() ?: 0
-                        val sach: Sach = Sach(tenTG, soTrang, maTL, tenNPM, soBPM)
-                        qls.ThemTaiLieu(sach)
-                    }
-                    "b","B" -> {
-                        println("Nhap So Phat Hanh: ")
-                        val soPH = readLine() ?: ""
-                        println("Nhap So Thang Phat Hanh: ")
-                        val soTPH = readLine() ?: ""
-                        println("Nhap Ma Tai Lieu: ")
-                        val maTL = readLine()?.toInt() ?: 0
-                        println("Nhap Ten Nha Phat Minh: ")
-                        val tenNPM = readLine()?.toInt()?:0
-                        println("Nhap So Ban Phat Minh: ")
-                        val soBPM = readLine()?.toInt() ?: 0
-                        val tapChi: TapChi = TapChi(soPH, soTPH, maTL, tenNPM, soBPM)
-                        qls.ThemTaiLieu(tapChi)
-                    }
-                    "c","C" -> {
-                        println("Nhap Ngay Phat Hanh: ")
-                        val ngayPH = readLine() ?: ""
-                        println("Nhap Ma Tai Lieu: ")
-                        val maTL = readLine()?: ""
-                        println("Nhap Ten Nha Phat Minh: ")
-                        val tenNPM = readLine()?.toInt() ?: 0
-                        println("Nhap So Ban Phat Minh: ")
-                        val soBPM = readLine()?.toInt() ?: 0
-                        val bao: Bao = Bao(ngayPH, maTL, tenNPM, soBPM)
-                        qls.ThemTaiLieu(bao)
-                    }
-                    else -> {
-                        println("Nhap Sai")
+                while (true) {
+                    println("Them Moi Tai Lieu: ")
+                    println("Nhap a De Them Sach: ")
+                    println("Nhap b De Them Tap Chi: ")
+                    println("Nhap c De Them Bao: ")
+                    val nhap = readLine()
+                    when (nhap) {
+                        "a", "A" -> {
+                            println("Nhap Ten Tac Gia: ")
+                            val tenTG = readLine() ?: ""
+                            println("Nhap So Trang: ")
+                            val soTrang = readLine() ?: ""
+                            println("Nhap Ma Tai Lieu: ")
+                            val maTL = readLine()?.toInt() ?: 0
+                            println("Nhap Ten Nha Phat Minh: ")
+                            val tenNPM = readLine() ?: ""
+                            println("Nhap So Ban Phat Minh: ")
+                            val soBPM = readLine()?.toInt() ?: 0
+                            val sach: Sach = Sach(tenTG, soTrang, maTL, tenNPM, soBPM)
+                            qls.ThemTaiLieu(sach)
+                        }
+                        "b", "B" -> {
+                            println("Nhap So Phat Hanh: ")
+                            val soPH = readLine() ?: ""
+                            println("Nhap So Thang Phat Hanh: ")
+                            val soTPH = readLine() ?: ""
+                            println("Nhap Ma Tai Lieu: ")
+                            val maTL = readLine()?.toInt() ?: 0
+                            println("Nhap Ten Nha Phat Minh: ")
+                            val tenNPM = readLine()?.toInt() ?: 0
+                            println("Nhap So Ban Phat Minh: ")
+                            val soBPM = readLine()?.toInt() ?: 0
+                            val tapChi: TapChi = TapChi(soPH, soTPH, maTL, tenNPM, soBPM)
+                            qls.ThemTaiLieu(tapChi)
+                        }
+                        "c", "C" -> {
+                            println("Nhap Ngay Phat Hanh: ")
+                            val ngayPH = readLine() ?: ""
+                            println("Nhap Ma Tai Lieu: ")
+                            val maTL = readLine() ?: ""
+                            println("Nhap Ten Nha Phat Minh: ")
+                            val tenNPM = readLine()?.toInt() ?: 0
+                            println("Nhap So Ban Phat Minh: ")
+                            val soBPM = readLine()?.toInt() ?: 0
+                            val bao: Bao = Bao(ngayPH, maTL, tenNPM, soBPM)
+                            qls.ThemTaiLieu(bao)
+                        }
+                        else -> {
+                            println("Nhap Sai")
+                        }
                     }
                 }
             }
             "2" -> {
                 println("Nhap Ma Tai Lieu Can Xoa: ")
+                val maTL = readLine() ?: ""
+                qls.XoaTaiLieuTheoSoTaiLieu(maTL)
+            }
+            "3" -> {
+                qls.HienThiThongTinTaiLieu()
+            }
+            "4" -> {
+                println("Nhap Loai Tai Lieu Can Tim Kiem: ")
+                val loai = readLine() ?: ""
+                qls.TimKiemTaiLieuTheoLoai(loai)
+                val ketQua = qls.TimKiemTaiLieuTheoLoai(loai)
+                println("Ket Qua La: $ketQua ")
             }
         }
 
